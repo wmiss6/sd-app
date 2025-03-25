@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  forge-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: forge-dev
+    volumes:
+      - .:/app
+      - forge-node-modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+
+volumes:
+  forge-node-modules:
